@@ -1,10 +1,11 @@
 <script setup>
-import Rain from './components/RainDistribution.vue'
 </script>
 
 <template>
-  <Rain />
+    <router-view></router-view>
 </template>
 
-<style>
+<style lang="scss">
+@import "./assets/style/index.scss";
+@import "./assets/style/reset.css";
 </style>

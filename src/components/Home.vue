@@ -86,7 +86,7 @@ export default {
     overflow-y: auto; //设置滚动条
     transition:width 0.5s; //设置左侧导航栏向左收起时的动画
     .menu-fold{
-      margin-top: 15  px;
+      margin-top: 15px;
       margin-right: 12.5px;
       margin-left: 18px;
 

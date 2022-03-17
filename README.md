@@ -1,7 +1,25 @@
-# Vue 3 + Vite
+本地运行
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+前提：安装node，yarn
 
-## Recommended IDE Setup
+安装依赖
 
-- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+```
+yarn
+```
+
+vite服务器运行
+
+```
+yarn dev
+```
+
+UI壳子搭建完成
+
+![image-20220317170014068](https://gitee.com/dan_but/image2/raw/master/img/image-20220317170014068.png)
+
+> 左边为2012年灯光影像图，右边为2016年灯光影像图
+
+![image-20220317170047132](https://gitee.com/dan_but/image2/raw/master/img/image-20220317170047132.png)
+
+更多功能正在探索完善中..................

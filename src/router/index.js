@@ -1,6 +1,7 @@
 import { createRouter,createWebHashHistory} from 'vue-router';
 import Home from './../components/Home.vue'
 import Night from './../view/night.vue'
+import three from './../view/3D-night.vue'
 
 const routes = [
     {
@@ -20,6 +21,14 @@ const routes = [
                 },
                 component:Night
             },
+            {
+                name:'three',
+                path:'/three',
+                meta:{
+                    title:'3D Earth at Night'
+                },
+                component:three
+            }
         ]
     }
 ]

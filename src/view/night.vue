@@ -1,6 +1,6 @@
 <template>
-<div id="map" class="map">
-    <div id="swipeContainer">
+<div id="map" class="map" :style="{height:this.height}">
+    <div id="swipeContainer" >
         <div id="swipeDiv">
             <div class="handle"></div>
         </div>
@@ -24,7 +24,8 @@ export default {
   name: "night",
   data() {
     return {
-      map:{}
+      map:{},
+      height:(window.innerHeight) + 'px'
     }
   },
   created() {
@@ -138,7 +139,7 @@ export default {
             ctx.restore();
         });
     }
-  }
+  },
 }
 </script>
 

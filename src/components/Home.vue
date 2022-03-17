@@ -1,11 +1,11 @@
 <script >
 import BreadCrumb from "./BreadCrumb.vue";
 // 一个用户图像+密码锁图标
-import { Bell, Fold, Expand,MapLocation,User} from "@element-plus/icons-vue";
+import { Bell, Fold, Expand,MoonNight,User} from "@element-plus/icons-vue";
 
 export default {
   name: "home",
-  components: {Bell, Fold, BreadCrumb, Expand ,MapLocation,User},
+  components: {Bell, Fold, BreadCrumb, Expand ,MoonNight,User},
   data() {
     return {
       isCollapse: true,
@@ -34,6 +34,7 @@ export default {
             <expand v-if="isCollapse" style="cursor: pointer;font-size:25px"  />
             <fold v-else style="cursor: pointer;font-size:25px" />
           </el-icon>
+          <span v-if="!isCollapse" id="text">Explore the earth</span>
       </div>
       <el-menu
         :default-active="activeMenu"
@@ -45,23 +46,20 @@ export default {
       >
         <el-sub-menu index="1">
           <template #title>
-            <el-icon ><map-location style="font-size:25px" /></el-icon>
-            <span>MapDemo</span>
+            <el-icon><moon-night  style="font-size:25px" /></el-icon>
+            <span>地球村的夜晚</span>
           </template>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-          <el-menu-item index="1-3">item three</el-menu-item>
-          <el-menu-item index="1-4">item one</el-menu-item>
+          <el-menu-item index="night" >2012与2016</el-menu-item>
+          <el-menu-item index="three">3D-2016</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="1">
           <template #title>
             <el-icon><user style="font-size:25px"/></el-icon>
             <span>关于</span>
           </template>
-          <el-menu-item index="1-1">item one</el-menu-item>
-          <el-menu-item index="1-2">item two</el-menu-item>
-          <el-menu-item index="1-3">item three</el-menu-item>
-          <el-menu-item index="1-4">item one</el-menu-item>
+          <el-menu-item index="1-2">探索中</el-menu-item>
+          <el-menu-item index="1-3">网站架构</el-menu-item>
+          <el-menu-item index="1-4"></el-menu-item>
         </el-sub-menu>
       </el-menu>
     </div>
@@ -89,8 +87,8 @@ export default {
       margin-top: 15px;
       margin-right: 12.5px;
       margin-left: 18px;
-
       // padding: 25px;
+      
     }
     .nav-menu {
       height: calc(100vh - 50px);
@@ -107,6 +105,14 @@ export default {
       width: 200px;
       overflow: hidden;
       transition:width 0.5s;
+      #text{
+        position: absolute;
+        // top: 50%;
+        top:18px;
+        right:20px;
+        // transform: translateY(-50%);
+      }
+
     }
   }
   .content-right {

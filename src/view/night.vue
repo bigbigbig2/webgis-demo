@@ -15,8 +15,8 @@ import Map from "ol/Map";
 import View from "ol/View";
 import TileWMS from 'ol/source/TileWMS';
 import VectorSource from 'ol/source/Vector';
- import {Text, Fill, Stroke, Style} from 'ol/style';
- import {defaults} from 'ol/control';
+import {Text, Fill, Stroke, Style} from 'ol/style';
+import {defaults} from 'ol/control';
  import {getRenderPixel} from 'ol/render';
  import OSM from 'ol/source/OSM';
 
@@ -34,7 +34,7 @@ export default {
   mounted() {
     this.map =this.initMap();
     this.initSwipeDom(this.map);
-    this.swipeLayer(this.map)
+    this.swipeLayer(this.map);
     
     
   },
@@ -48,7 +48,9 @@ export default {
               "FORMAT":"image/png8",
               'VERSION':'1.1.1',
               'LAYERS':'earth_night:2012',
-            }
+            },
+            attributions:'<a href="https://earthobservatory.nasa.gov/features/NightLights">© Data by NASA</a> '
+            
             
         })
       })
@@ -59,15 +61,17 @@ export default {
                   "FORMAT":"image/png8",
                   'VERSION':'1.1.1',
                   'LAYERS':'earth_night:2016',
-                }
-                
+                },
+                attributions:
+                '<a href="https://earthobservatory.nasa.gov/features/NightLights">© Data by NASA</a> ' 
+                  
             })
       })
       var map = new Map({
         controls:defaults({
-          attribution: false,
-          rotate: false,
-          zoom: false
+            attribution: true,
+            rotate: false,
+            zoom: false
         }),
         target: "map",
         layers: [twelve,sixteen],
@@ -77,7 +81,12 @@ export default {
           zoom: 1,
           minZoom:0,
           maxZoom: 7
-        })
+        }),
+        controls:defaults({
+            attribution: true,
+            rotate: false,
+            zoom: false
+        }),
       });
       return map
     },
@@ -219,5 +228,8 @@ export default {
   width: 20px;
   height: 24px;
   line-height: 2;
+}
+button {
+  display: none;
 }
 </style>

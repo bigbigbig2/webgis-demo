@@ -6,6 +6,7 @@
         </div>
     </div>
 </div>
+
 </template>
 
 <script>
@@ -14,11 +15,8 @@ import TileLayer from 'ol/layer/Tile';
 import Map from "ol/Map";
 import View from "ol/View";
 import TileWMS from 'ol/source/TileWMS';
-import VectorSource from 'ol/source/Vector';
-import {Text, Fill, Stroke, Style} from 'ol/style';
 import {defaults} from 'ol/control';
- import {getRenderPixel} from 'ol/render';
- import OSM from 'ol/source/OSM';
+import { ElMessageBox, ElMessage } from 'element-plus'
 
 export default {
   name: "night",
@@ -35,7 +33,7 @@ export default {
     this.map =this.initMap();
     this.initSwipeDom(this.map);
     this.swipeLayer(this.map);
-    
+    this.messageBox()
     
   },
   methods: {
@@ -147,6 +145,15 @@ export default {
             var ctx = event.context;
             ctx.restore();
         });
+    },
+    messageBox(){
+       ElMessageBox.alert(
+        '<p style="font-size:18px">卷帘的左侧为2012年的地球夜间灯光数据，右侧为2016年的地球夜间灯光数据，可以拖动拖动卷帘条拖动对比探索🌍🌎🌏┏ (゜ω゜)=☞</p>',
+        '一只提示',
+        {
+          dangerouslyUseHTMLString: true,
+        }
+      )
     }
   },
 }

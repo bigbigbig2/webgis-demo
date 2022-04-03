@@ -14,6 +14,8 @@ vite服务器运行
 yarn dev
 ```
 
+
+
 已完成部分截图：
 
 ![Snipaste_2022-03-23_20-20-34](https://gitee.com/dan_but/image2/raw/master/img/Snipaste_2022-03-23_20-20-34.png)

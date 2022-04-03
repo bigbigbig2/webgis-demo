@@ -1,11 +1,10 @@
 <script >
 import BreadCrumb from "./BreadCrumb.vue";
-// 一个用户图像+密码锁图标
-import { Bell, Fold, Expand,MoonNight,User} from "@element-plus/icons-vue";
+import { Bell, Fold, Expand,MoonNight,LocationInformation,User} from "@element-plus/icons-vue";
 
 export default {
   name: "home",
-  components: {Bell, Fold, BreadCrumb, Expand ,MoonNight,User},
+  components: {Bell, Fold, BreadCrumb, Expand ,MoonNight,LocationInformation,User},
   data() {
     return {
       isCollapse: true,
@@ -51,6 +50,13 @@ export default {
           </template>
           <el-menu-item index="night" >2012与2016</el-menu-item>
           <el-menu-item index="three">3D-2016</el-menu-item>
+        </el-sub-menu>
+        <el-sub-menu index="1">
+          <template #title>
+            <el-icon><location-information style="font-size:25px" /></el-icon>
+            <span>dijkstra</span>
+          </template>
+          <el-menu-item index="dijkstra" >深圳市区最短路径导航</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="1">
           <template #title>

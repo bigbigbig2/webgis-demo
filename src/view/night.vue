@@ -43,9 +43,10 @@ export default {
         source: new TileWMS({
             url:'http://localhost:8080/geoserver/earth_night/wms',
             params:{
-              "FORMAT":"image/png8",
+              "FORMAT":"image/png",
               'VERSION':'1.1.1',
               'LAYERS':'earth_night:2012',
+              'tiled':true
             },
             attributions:'<a href="https://earthobservatory.nasa.gov/features/NightLights">© Data by NASA</a> '
             
@@ -56,9 +57,10 @@ export default {
             source: new TileWMS({
                 url:'http://localhost:8080/geoserver/earth_night/wms',
                 params:{
-                  "FORMAT":"image/png8",
+                  "FORMAT":"image/png",
                   'VERSION':'1.1.1',
                   'LAYERS':'earth_night:2016',
+                  'tiled':true
                 },
                 attributions:
                 '<a href="https://earthobservatory.nasa.gov/features/NightLights">© Data by NASA</a> ' 

@@ -51,14 +51,14 @@ export default {
           <el-menu-item index="night" >2012与2016</el-menu-item>
           <el-menu-item index="three">3D-2016</el-menu-item>
         </el-sub-menu>
-        <el-sub-menu index="1">
+        <el-sub-menu index="2">
           <template #title>
             <el-icon><location-information style="font-size:25px" /></el-icon>
             <span>dijkstra</span>
           </template>
           <el-menu-item index="dijkstra" >深圳市区最短路径导航</el-menu-item>
         </el-sub-menu>
-        <el-sub-menu index="1">
+        <el-sub-menu index="3">
           <template #title>
             <el-icon><user style="font-size:25px"/></el-icon>
             <span>关于</span>

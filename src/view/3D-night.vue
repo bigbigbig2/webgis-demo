@@ -32,7 +32,7 @@ export default{
             layers:'earth_night:2016',
             parameters:{
                 service: 'WMS',
-                format:'image/png',
+                format:'image/jpeg',
                 transparent:true,
             }
             

@@ -1,10 +1,10 @@
 <script >
 import BreadCrumb from "./BreadCrumb.vue";
-import { Bell, Fold, Expand,MoonNight,LocationInformation,User} from "@element-plus/icons-vue";
+import { Bell, Fold, Expand,MoonNight,LocationInformation,User,Coin} from "@element-plus/icons-vue";
 
 export default {
   name: "home",
-  components: {Bell, Fold, BreadCrumb, Expand ,MoonNight,LocationInformation,User},
+  components: {Bell, Fold, BreadCrumb, Expand ,MoonNight,LocationInformation,User,Coin},
   data() {
     return {
       isCollapse: true,
@@ -53,10 +53,13 @@ export default {
         </el-sub-menu>
         <el-sub-menu index="2">
           <template #title>
-            <el-icon><location-information style="font-size:25px" /></el-icon>
-            <span>dijkstra</span>
+            <el-icon><coin style="font-size:25px" /></el-icon>
+            <span>WFS服务</span>
           </template>
-          <el-menu-item index="dijkstra" >深圳市区最短路径导航</el-menu-item>
+          <el-menu-item index="queryWFS" >通过WFS查询要素</el-menu-item>
+          <el-menu-item index="operateWFS" >通过WFS修改要素</el-menu-item>
+          <el-menu-item index="addWFS" >通过WFS添加要素</el-menu-item>
+          <el-menu-item index="deleteWFS" >通过WFS删除要素</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="3">
           <template #title>

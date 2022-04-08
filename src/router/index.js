@@ -2,7 +2,10 @@ import { createRouter,createWebHashHistory} from 'vue-router';
 import Home from './../components/Home.vue'
 import Night from './../view/night.vue'
 import three from './../view/3D-night.vue'
-import dijkstra from './../view/dijkstra.vue'
+import queryWFS from './../view/queryWFS.vue'
+import addWFSVue from '../view/addWFS.vue';
+import deleteWFS from './../view/deleteWFS.vue';
+import operateWFS from './../view/operateWFS.vue'
 
 
 const routes = [
@@ -32,12 +35,36 @@ const routes = [
                 component:three
             },
             {
-                name:'dijkstra',
-                path:'/dijkstra',
+                name:'queryWFS',
+                path:'/queryWFS',
                 meta:{
-                    title:'深圳市区最短路径导航'
+                    title:'通过WFS查询要素'
                 },
-                component:dijkstra
+                component:queryWFS
+            },
+            {
+                name:'addWFSVue',
+                path:'/addWFSVue',
+                meta:{
+                    title:'通过WFS添加要素'
+                },
+                component:addWFSVue
+            },
+            {
+                name:'deleteWFS',
+                path:'/deleteWFS',
+                meta:{
+                    title:'通过WFS删除要素'
+                },
+                component:queryWFS
+            },
+            {
+                name:'operateWFS',
+                path:'/operateWFS',
+                meta:{
+                    title:'通过WFS修改要素'
+                },
+                component:operateWFS
             }
         ]
     }

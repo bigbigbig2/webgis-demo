@@ -48,7 +48,7 @@ export default {
               'LAYERS':'earth_night:2012',
               'tiled':true
             },
-            attributions:'<a href="https://earthobservatory.nasa.gov/features/NightLights">© Data by NASA</a> '
+            attributions:'<a type="info" href="https://earthobservatory.nasa.gov/features/NightLights">Data from NASA</a> '
             
             
         })
@@ -63,7 +63,7 @@ export default {
                   'tiled':true
                 },
                 attributions:
-                '<a href="https://earthobservatory.nasa.gov/features/NightLights">© Data by NASA</a> ' 
+                '<a type="info" href="https://earthobservatory.nasa.gov/features/NightLights">Data from NASA</a> ' 
                   
             })
       })

@@ -1,10 +1,13 @@
 <template>
-    <div id="map" class="map" :style="{height:this.height}" v-loading="loading">
+<div v-loading="loading"
+      element-loading-text="Loading..."
+      element-loading-background="rgba(0, 0, 0, 0.8)">
+    <div id="map" class="map" :style="{height:this.height}" >
       <el-button type="info" class="serach" @click="queryWfs">
           要素查询 <el-icon><search /></el-icon>
       </el-button>
     </div>
-
+ </div>
 </template>
 
 <script>
@@ -18,7 +21,6 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
-import { defaults, ZoomToExtent,Rotate } from 'ol/control'
 import { Search} from "@element-plus/icons-vue";
 
 import { ElMessageBox, ElMessage } from 'element-plus'
@@ -36,6 +38,8 @@ export default {
   created() {},
   mounted() {
     this.map = this.initMap();
+    // setTimeout(() => this.loading=false,3000);
+
   },
   methods: {
     initMap(){
@@ -58,27 +62,36 @@ export default {
       return map;
     },
     queryWfs(){
-      this.loading=true;
-      var roadLayer =new VectorLayer({
-        source: new VectorSource({
-          format: new GeoJSON(),
-          url:'http://localhost:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:gz_small&outputFormat=application/json&srsname=EPSG:4326'
-        }),
-        style: function(feature, resolution) {
-          return new Style({
-            stroke: new Stroke({
-              color: 'orange',
-              width: 1
-            })
-          });
-        }    
-      })
-      this.map.addLayer(roadLayer);
-      
+      if(this.map.getAllLayers()[1]){
+        ElMessage.error('要素已存在，无法再次加载');
+      }else{
+        this.loading=true;
+        // setTimeout(()=>this.loading=false,1000)
+        var roadLayer =new VectorLayer({
+          source: new VectorSource({
+            format: new GeoJSON(),
+            url:'http://localhost:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:gz_small&outputFormat=application/json&srsname=EPSG:4326'
+          }),
+          style: function(feature, resolution) {
+            return new Style({
+              stroke: new Stroke({
+                color: 'orange',
+                width: 1
+              })
+            });
+          }    
+        })
+        //这里注意，如果回调函数使用的是function(){}表达式则无法修改外部的loading，只能读取到。
+        roadLayer.on('postrender',()=>{
+            this.loading = false;
+            console.log(this.loading)
+        })
+        this.map.addLayer(roadLayer)
+         
+      } 
       
     }
-  }
-      
+  }     
 }
 </script>
 

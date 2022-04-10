@@ -56,7 +56,7 @@ const routes = [
                 meta:{
                     title:'通过WFS删除要素'
                 },
-                component:queryWFS
+                component:deleteWFS
             },
             {
                 name:'operateWFS',

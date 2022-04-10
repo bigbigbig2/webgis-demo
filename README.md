@@ -16,23 +16,21 @@ yarn dev
 
 已完成部分截图：
 
-## 地球存的夜晚
+## 地球村的夜晚
+
+使用`openlayers`调用`geoserver`发布的`WMS`服务
 
 ![Snipaste_2022-03-23_20-20-34](https://gitee.com/dan_but/image2/raw/master/img/Snipaste_2022-03-23_20-20-34.png)
 
 卷帘的左侧为2012年的地球夜间灯光数据，右侧为2016年的地球夜间灯光数据，可以拖动拖动卷帘条拖动对比探索🌍🌎🌏，数据来源于NASA。
 
-上面openlayers中和下面cesium加载的为发布到geoserver中的wms。
+使用`cesium`加载`geoserver`的`wms`。
 
 ![Snipaste_2022-03-23_20-20-53](https://gitee.com/dan_but/image2/raw/master/img/Snipaste_2022-03-23_20-20-53.png)
 
-## 通过WFS增删改查要素
+## 通过WFS查询要素
 
-### 查
-
-shp数据存储于postgresql/postgis，在geoserver连接postgis发布图层，供给openlayers调用（openlayers不支持shpfile，需通过api转成geoJSON）
-
-通过WFS查询要素GIF如下：
+`shp`数据(下载于`OSM`路网数据）存储于`postgresql/postgis`，在`geoserver`连接`postgis`发布图层，供给openlayers调用（`openlayers`不支持`shpfile`，需通过`api`转成`geoJSON`）
 
 查询要素（情况1：未加载）
 
@@ -42,7 +40,18 @@ shp数据存储于postgresql/postgis，在geoserver连接postgis发布图层，�
 
 ![featureQuery2](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/featureQuery2.gif)
 
-### 改
+## 通过WFS修改要素并保存到数据库
 
-![editFeathers](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/editFeathers.gif)
+![editFeatures](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/editFeatures.gif)
 
+> 为了降低gif文件大小，将浏览器窗口减小和减低了FPS，将就看看≡[。。]≡
+
+## 通过WFS添加要素
+
+![addFeatures](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/addFeatures.gif)
+
+由于数据源的原因，无法真正的保存到数据库（偷懒一下，懒得折腾了ψ(._. )>)
+
+## 通过WFS删除要素
+
+![deleteFeatures](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/deleteFeatures.gif)

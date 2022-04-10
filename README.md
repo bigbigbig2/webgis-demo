@@ -28,6 +28,8 @@ yarn dev
 
 ## 通过WFS增删改查要素
 
+### 查
+
 shp数据存储于postgresql/postgis，在geoserver连接postgis发布图层，供给openlayers调用（openlayers不支持shpfile，需通过api转成geoJSON）
 
 通过WFS查询要素GIF如下：
@@ -40,5 +42,7 @@ shp数据存储于postgresql/postgis，在geoserver连接postgis发布图层，�
 
 ![featureQuery2](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/featureQuery2.gif)
 
-## 
+### 改
+
+![editFeathers](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/editFeathers.gif)
 

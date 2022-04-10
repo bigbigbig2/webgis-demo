@@ -3,7 +3,7 @@ import Home from './../components/Home.vue'
 import Night from './../view/night.vue'
 import three from './../view/3D-night.vue'
 import queryWFS from './../view/queryWFS.vue'
-import addWFSVue from '../view/addWFS.vue';
+import addWFS from '../view/addWFS.vue';
 import deleteWFS from './../view/deleteWFS.vue';
 import operateWFS from './../view/operateWFS.vue'
 
@@ -43,12 +43,12 @@ const routes = [
                 component:queryWFS
             },
             {
-                name:'addWFSVue',
-                path:'/addWFSVue',
+                name:'addWFS',
+                path:'/addWFS',
                 meta:{
                     title:'通过WFS添加要素'
                 },
-                component:addWFSVue
+                component:addWFS
             },
             {
                 name:'deleteWFS',

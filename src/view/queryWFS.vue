@@ -103,7 +103,7 @@ export default {
 .serach {
   position: absolute;
   right:15px;
-  bottom:15px;
+  top:15px;
   z-index: 10;
   color:aliceblue;
 }

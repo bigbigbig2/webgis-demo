@@ -19,7 +19,9 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.2.0",
+    "cesium": "^1.92.0",
     "sass": "^1.43.4",
-    "vite": "^2.8.0"
+    "vite": "^2.9.5",
+    "vite-plugin-cesium": "^1.2.16"
   }
 }

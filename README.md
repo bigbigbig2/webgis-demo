@@ -55,3 +55,10 @@ yarn dev
 ## 通过WFS删除要素
 
 ![deleteFeatures](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/deleteFeatures.gif)
+
+## 雨水分布图
+
+数据：通过axios获取http://typhoon.zjwater.gov.cn/（浙江水利厅）中实时的降雨等值面JSON数据
+
+![rain](https://cdn.jsdelivr.net/gh/bigbigbig2/image2/img/202204152310915.gif)
+

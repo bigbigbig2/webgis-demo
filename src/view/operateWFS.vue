@@ -121,8 +121,9 @@ export default {
           }    
         })
         //这里注意，如果回调函数使用的是function(){}表达式则无法修改外部的loading，只能读取到。
-        roadLayer.on('postrender',()=>{
+        const key = roadLayer.on('postrender',()=>{
             this.loading = false;
+            this.vectorLayer.un(key.type, key.listener)
         })
         this.map.addLayer(roadLayer)
          

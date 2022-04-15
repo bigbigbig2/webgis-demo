@@ -64,6 +64,13 @@ export default {
         <el-sub-menu index="3">
           <template #title>
             <el-icon><user style="font-size:25px"/></el-icon>
+            <span>ol杂烩</span>
+          </template>
+          <el-menu-item index="rain">雨水分布图</el-menu-item>
+        </el-sub-menu>
+        <el-sub-menu index="4">
+          <template #title>
+            <el-icon><user style="font-size:25px"/></el-icon>
             <span>关于</span>
           </template>
           <el-menu-item index="1-2">探索中</el-menu-item>

@@ -6,6 +6,7 @@ import queryWFS from './../view/queryWFS.vue'
 import addWFS from '../view/addWFS.vue';
 import deleteWFS from './../view/deleteWFS.vue';
 import operateWFS from './../view/operateWFS.vue'
+import rain from './../view/rain.vue'
 
 
 const routes = [
@@ -65,7 +66,16 @@ const routes = [
                     title:'通过WFS修改要素'
                 },
                 component:operateWFS
-            }
+            },
+            {
+                name:'rain',
+                path:'/rain',
+                meta:{
+                    title:'雨水分布图'
+                },
+                component:rain
+            },
+            
         ]
     }
 ]

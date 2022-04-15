@@ -66,7 +66,6 @@ export default {
         ElMessage.error('要素已存在，无法再次加载');
       }else{
         this.loading=true;
-        // setTimeout(()=>this.loading=false,1000)
         var roadLayer =new VectorLayer({
           source: new VectorSource({
             format: new GeoJSON(),
@@ -82,9 +81,9 @@ export default {
           }    
         })
         //这里注意，如果回调函数使用的是function(){}表达式则无法修改外部的loading，只能读取到。
-        roadLayer.on('postrender',()=>{
+        const key = roadLayer.on('postrender',()=>{
             this.loading = false;
-            console.log(this.loading)
+            this.vectorLayer.un(key.type, key.listener)
         })
         this.map.addLayer(roadLayer)
          

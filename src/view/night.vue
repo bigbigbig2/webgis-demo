@@ -41,11 +41,11 @@ export default {
       var twelve = new TileLayer({
         // source: new OSM(),
         source: new TileWMS({
-            url:'http://localhost:8080/geoserver/earth_night/wms',
+            url:'http://124.221.72.79:8080/geoserver/webgis_demo/wms',
             params:{
-              "FORMAT":"image/png",
+              "FORMAT":"image/png8",
               'VERSION':'1.1.1',
-              'LAYERS':'earth_night:2012',
+              'LAYERS':'webgis_demo:2012',
               'tiled':true
             },
             attributions:'<a type="info" href="https://earthobservatory.nasa.gov/features/NightLights">Data from NASA</a> '
@@ -55,11 +55,11 @@ export default {
       })
       var sixteen = new TileLayer({
             source: new TileWMS({
-                url:'http://localhost:8080/geoserver/earth_night/wms',
+                url:'http://124.221.72.79:8080/geoserver/webgis_demo/wms',
                 params:{
-                  "FORMAT":"image/png",
+                  "FORMAT":"image/png8",
                   'VERSION':'1.1.1',
-                  'LAYERS':'earth_night:2016',
+                  'LAYERS':'webgis_demo:2016',
                   'tiled':true
                 },
                 attributions:

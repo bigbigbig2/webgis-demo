@@ -1,10 +1,10 @@
 <script >
 import BreadCrumb from "./BreadCrumb.vue";
-import { Bell, Fold, Expand,MoonNight,LocationInformation,User,Coin} from "@element-plus/icons-vue";
+import { Bell, Fold, Expand,MoonNight,LocationInformation,User,Coin,Management} from "@element-plus/icons-vue";
 
 export default {
   name: "home",
-  components: {Bell, Fold, BreadCrumb, Expand ,MoonNight,LocationInformation,User,Coin},
+  components: {Bell, Fold, BreadCrumb, Expand ,MoonNight,LocationInformation,User,Coin,Management},
   data() {
     return {
       isCollapse: true,
@@ -16,6 +16,9 @@ export default {
     toggle() {
       this.isCollapse = !this.isCollapse;
     },
+    toAbout(){
+      this.$router.push('https://luxd.gq/about/')
+    }
   },
   mounted() {
 
@@ -63,7 +66,7 @@ export default {
         </el-sub-menu>
         <el-sub-menu index="3">
           <template #title>
-            <el-icon><user style="font-size:25px"/></el-icon>
+            <el-icon><management style="font-size:25px" /></el-icon>
             <span>ol杂烩</span>
           </template>
           <el-menu-item index="rain">雨水分布图</el-menu-item>
@@ -73,9 +76,9 @@ export default {
             <el-icon><user style="font-size:25px"/></el-icon>
             <span>关于</span>
           </template>
-          <el-menu-item index="1-2">探索中</el-menu-item>
-          <el-menu-item index="1-3">网站架构</el-menu-item>
-          <el-menu-item index="1-4"></el-menu-item>
+          <el-menu-item index="arc">网站架构</el-menu-item>
+          <el-menu-item index="log">更新日志</el-menu-item>
+          <a style="color: #fff;" href="https://luxd.gq/about/" target="_blank"><el-menu-item click="toAbout">关于白日梦想家</el-menu-item></a>
         </el-sub-menu>
       </el-menu>
     </div>

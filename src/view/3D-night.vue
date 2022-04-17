@@ -28,11 +28,11 @@ export default{
         // console.log(height)
         // 加载geoserver发布的WMS服务
         var earthNight = new Cesium.WebMapServiceImageryProvider({
-            url:'http://localhost:8080/geoserver/earth_night/wms',
-            layers:'earth_night:2016',
+            url:'http://124.221.72.79:8080/geoserver/webgis_demo/wms',
+            layers:'webgis_demo:2016',
             parameters:{
                 service: 'WMS',
-                format:'image/jpeg',
+                format:'image/png8',
                 transparent:true,
             }
             

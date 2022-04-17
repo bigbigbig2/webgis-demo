@@ -69,21 +69,20 @@ export default {
         var roadLayer =new VectorLayer({
           source: new VectorSource({
             format: new GeoJSON(),
-            url:'http://localhost:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:gz_small&outputFormat=application/json&srsname=EPSG:4326'
+            url:'http://124.221.72.79:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:wfs_gz_roads&outputFormat=application/json&srsname=EPSG:4326'
           }),
           style: function(feature, resolution) {
             return new Style({
               stroke: new Stroke({
                 color: 'orange',
-                width: 1
+                width: 2
               })
             });
           }    
         })
         //这里注意，如果回调函数使用的是function(){}表达式则无法修改外部的loading，只能读取到。
-        const key = roadLayer.on('postrender',()=>{
+        roadLayer.on('postrender',()=>{
             this.loading = false;
-            this.vectorLayer.un(key.type, key.listener)
         })
         this.map.addLayer(roadLayer)
          

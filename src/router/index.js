@@ -7,6 +7,8 @@ import addWFS from '../view/addWFS.vue';
 import deleteWFS from './../view/deleteWFS.vue';
 import operateWFS from './../view/operateWFS.vue'
 import rain from './../view/rain.vue'
+import log from './../view/log.vue'
+import arc from './../view/arc.vue'
 
 
 const routes = [
@@ -74,6 +76,22 @@ const routes = [
                     title:'雨水分布图'
                 },
                 component:rain
+            },
+            {
+                name:'log',
+                path:'/log',
+                meta:{
+                    title:'更新日志'
+                },
+                component:log
+            },
+            {
+                name:'arc',
+                path:'/arc',
+                meta:{
+                    title:'网站架构'
+                },
+                component:arc
             },
             
         ]

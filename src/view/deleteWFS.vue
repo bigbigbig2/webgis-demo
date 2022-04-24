@@ -67,9 +67,9 @@ export default {
         target:"map",
         layers:[baseLayer,],
         view:new View({
-          center: [113.325127,23.108964],
+          center: [113.292464,23.097931],
           projection: 'EPSG:4326',
-          zoom: 18,
+          zoom: 17,
           minZoom:1,
           maxZoom:18
         })
@@ -86,7 +86,7 @@ export default {
             format: new GeoJSON({
               geometryName: 'geom'
             }),
-            url:'http://124.221.72.79:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:wfs_gz_roads&outputFormat=application/json&srsname=EPSG:4326'
+            url:'http://124.221.72.79:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:zs&outputFormat=application/json&srsname=EPSG:4326'
           }),
           style: function(feature, resolution) {
             return new Style({
@@ -125,14 +125,14 @@ export default {
       var WFSTSerializer = new WFS();
       var featObject = WFSTSerializer.writeTransaction(null,
         null, features, {
-          featureType: 'gz_small',
-          featureNS: 'http://webgis_demo',
+          featureType: 'zs',
+          featureNS: 'http://124.221.72.79:8080/geoserver/webgis_demo.com',
           srsName: 'EPSG:4326'
         });
       var serializer = new XMLSerializer();
       var featString = serializer.serializeToString(featObject);
       var request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/geoserver/wfs?service=wfs');
+      request.open('POST', 'http://124.221.72.79:8080/geoserver/wfs?service=wfs');
       request.setRequestHeader('Content-Type', 'text/xml');
       request.send(featString);
       request.onload=()=>{

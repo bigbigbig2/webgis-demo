@@ -38,8 +38,6 @@ export default {
   created() {},
   mounted() {
     this.map = this.initMap();
-    // setTimeout(() => this.loading=false,3000);
-
   },
   methods: {
     initMap(){
@@ -52,9 +50,9 @@ export default {
         target:"map",
         layers:[baseLayer],
         view:new View({
-          center: [113.325127,23.108964],
+          center: [113.292464,23.097931],
           projection: 'EPSG:4326',
-          zoom: 15,
+          zoom: 17,
           minZoom:1,
           maxZoom:18
         })
@@ -69,13 +67,13 @@ export default {
         var roadLayer =new VectorLayer({
           source: new VectorSource({
             format: new GeoJSON(),
-            url:'http://124.221.72.79:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:wfs_gz_roads&outputFormat=application/json&srsname=EPSG:4326'
+            url:'http://124.221.72.79:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:zs&outputFormat=application/json&srsname=EPSG:4326'
           }),
           style: function(feature, resolution) {
             return new Style({
               stroke: new Stroke({
                 color: 'orange',
-                width: 2
+                width: 3
               })
             });
           }    

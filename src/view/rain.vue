@@ -121,9 +121,8 @@ export default {
       url: 'http://typhoon.zjwater.gov.cn/Api/LeastRain/' + a,
       method:'get',
       responseType: 'json',
-      jsonp: 'callback',
       }).then(a=>{
-        console.log(a);
+        // console.log(a);查看数据结构来解析
         var b, c, d, e, f, g;
           this.vectorLayer.getSource().clear();
           //根据获取的数据解析数据

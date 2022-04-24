@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build ",
+    "preview": "vite preview "
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.4",
@@ -22,6 +22,8 @@
     "cesium": "^1.92.0",
     "sass": "^1.43.4",
     "vite": "^2.9.5",
-    "vite-plugin-cesium": "^1.2.16"
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-externals": "^0.4.0",
+    "vite-plugin-html-config": "^1.0.8"
   }
 }

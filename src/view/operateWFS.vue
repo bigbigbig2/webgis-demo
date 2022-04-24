@@ -29,7 +29,6 @@ import Style from 'ol/style/Style';
 import Stroke from 'ol/style/Stroke';
 import Select from 'ol/interaction/Select';
 import Modify from 'ol/interaction/Modify';
-// import {Modify} from 'ol/interaction/Modify';
 import { Search,Finished} from "@element-plus/icons-vue";
 import WFS from 'ol/format/WFS';
 import { ElMessageBox, ElMessage } from 'element-plus'
@@ -74,9 +73,8 @@ export default {
     });
 
     this.modifyInteraction.on('modifyend', (e)=> {
-      // 把修改完成的feature暂存起来
+      // 把修改后的feature暂存起来
       this.modifiedFeatures = e.features;
-      // console.log(this.modifiedFeatures)
     });
   },
   methods: {
@@ -90,9 +88,9 @@ export default {
         target:"map",
         layers:[baseLayer],
         view:new View({
-          center: [113.345024,23.127793],
+          center:[113.292464,23.097931],
           projection: 'EPSG:4326',
-          zoom: 18,
+          zoom: 17,
           minZoom:1,
           maxZoom:18
         })
@@ -107,9 +105,9 @@ export default {
         var roadLayer =new VectorLayer({
           source: new VectorSource({
             format: new GeoJSON({
-              geometryName: 'geom' // 因为数据源里面字段the_geom存储的是geometry，所以需要指定
+              geometryName:'geom'
             }),
-            url:'http://124.221.72.79:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:wfs_gz_roads&outputFormat=application/json&srsname=EPSG:4326'
+            url:'http://124.221.72.79:8080/geoserver/wfs?service=wfs&version=1.1.0&request=GetFeature&typeNames=webgis_demo:zs&outputFormat=application/json&srsname=EPSG:4326'
           }),
           style: function(feature, resolution) {
             return new Style({
@@ -157,7 +155,7 @@ export default {
     save(){
       this.loading = true;
       if (this.modifiedFeatures && this.modifiedFeatures.getLength() > 0) {
-        //转换坐标
+        //转换坐标，先克隆一份要素出来（深拷贝）
         var modifiedFeature = this.modifiedFeatures.item(0).clone();
         //注意ID是必须，通过ID才能找到对应修改的feature
         modifiedFeature.setId(this.modifiedFeatures.item(0).getId());
@@ -177,15 +175,15 @@ export default {
       var WFSTSerializer = new WFS();
       var featObject = WFSTSerializer.writeTransaction(null,
         features, null, {
-          featureType: 'gz_small', 
-          featureNS: 'http://webgis_demo',  // 注意这个值必须为创建工作区时的命名空间URI
+          featureType: 'zs', 
+          featureNS: 'http://124.221.72.79:8080/geoserver/webgis_demo.com',  // 注意这个值必须为创建工作区时的命名空间URI
           srsName: 'EPSG:4326'
         });
-      // 转换为xml内容发送到服务器端
+      // 转换为xml内容发送到服务器端（发送的是xml格式的请求）
       var serializer = new XMLSerializer();
       var featString = serializer.serializeToString(featObject);
       var request = new XMLHttpRequest();
-      request.open('POST', 'http://localhost:8080/geoserver/wfs?service=wfs');
+      request.open('POST', 'http://124.221.72.79:8080/geoserver/wfs?service=wfs');
       // 指定内容为xml类型
       request.setRequestHeader('Content-Type', 'text/xml');
       request.send(featString);

@@ -11,11 +11,12 @@
 
 <script>
 import TileLayer from 'ol/layer/Tile';
-// import VectorLayer from 'ol/layer/Vector';
 import Map from "ol/Map";
 import View from "ol/View";
-import TileWMS from 'ol/source/TileWMS';
+import WMTS from 'ol/source/WMTS';
+import Projection from 'ol/proj/Projection';
 import {defaults} from 'ol/control';
+import WMTSTileGrid from 'ol/tilegrid/WMTS';
 import { ElMessageBox, ElMessage } from 'element-plus'
 
 export default {
@@ -23,7 +24,10 @@ export default {
   data() {
     return {
       map:{},
-      height:(window.innerHeight) + 'px'
+      height:(window.innerHeight) + 'px',
+      gridNames:['EPSG:4326:0', 'EPSG:4326:1', 'EPSG:4326:2', 'EPSG:4326:3', 'EPSG:4326:4', 'EPSG:4326:5', 'EPSG:4326:6'],
+      resolutions:[0.703125, 0.3515625, 0.17578125, 0.087890625, 0.0439453125, 0.02197265625, 0.010986328125]
+
     }
   },
   created() {
@@ -40,31 +44,67 @@ export default {
     initMap(){
       var twelve = new TileLayer({
         // source: new OSM(),
-        source: new TileWMS({
-            url:'http://124.221.72.79:8080/geoserver/webgis_demo/wms',
-            params:{
-              "FORMAT":"image/png8",
-              'VERSION':'1.1.1',
-              'LAYERS':'webgis_demo:2012',
-              'tiled':true
-            },
-            attributions:'<a type="info" href="https://earthobservatory.nasa.gov/features/NightLights">Data from NASA</a> '
-            
-            
+        // source: new TileWMS({
+        //     url:'http://124.221.72.79:8080/geoserver/webgis_demo/wms',
+        //     params:{
+        //       "FORMAT":"image/png8",
+        //       'VERSION':'1.1.1',
+        //       'LAYERS':'webgis_demo:2012',
+        //       'tiled':true
+        //     },
+        // })
+        source:new WMTS({
+          url: 'http://124.221.72.79:8080/geoserver/gwc/service/wmts',
+          layer:'webgis_demo:2012',
+          matrixSet: 'EPSG:4326',
+          format: 'image/png',
+          projection: new Projection({
+            code: 'EPSG:4326',//投影编码
+            units: 'degrees',
+            axisOrientation: 'neu'
+          }),
+          tileGrid:new WMTSTileGrid({
+                tileSize: [256, 256],
+                extent: [-180.0, -90.0, 180.0, 90.0],//范围,这里使用的默认的EPSG4326策略，参考相关配置即可
+                origin: [-180.0, 90.0], //原点，左上角
+                resolutions: this.resolutions, //瓦片地图分辨率
+                matrixIds: this.gridNames, // Name
+          }),
+          attributions:'<a type="info" href="https://earthobservatory.nasa.gov/features/NightLights">Data from NASA</a> '
+
         })
+
       })
       var sixteen = new TileLayer({
-            source: new TileWMS({
-                url:'http://124.221.72.79:8080/geoserver/webgis_demo/wms',
-                params:{
-                  "FORMAT":"image/png8",
-                  'VERSION':'1.1.1',
-                  'LAYERS':'webgis_demo:2016',
-                  'tiled':true
-                },
-                attributions:
-                '<a type="info" href="https://earthobservatory.nasa.gov/features/NightLights">Data from NASA</a> ' 
-                  
+            // source: new TileWMS({
+            //     url:'http://124.221.72.79:8080/geoserver/webgis_demo/wms',
+            //     params:{
+            //       "FORMAT":"image/png8",
+            //       'VERSION':'1.1.1',
+            //       'LAYERS':'webgis_demo:2016',
+            //       'tiled':true
+            //     },
+            //     attributions:
+            //     '<a type="info" href="https://earthobservatory.nasa.gov/features/NightLights">Data from NASA</a> ' 
+            // })
+            source:new WMTS({
+              url: 'http://124.221.72.79:8080/geoserver/gwc/service/wmts',
+              layer:'webgis_demo:2016',
+              matrixSet: 'EPSG:4326',
+              format: 'image/png',
+              projection: new Projection({
+                code: 'EPSG:4326',//投影编码
+                units: 'degrees',//单位
+                axisOrientation: 'neu' //轴方向
+              }),
+              tileGrid:new WMTSTileGrid({
+                    tileSize: [256, 256],
+                    extent: [-180.0, -90.0, 180.0, 90.0],//范围,这里使用的默认的EPSG4326策略，参考相关配置即可
+                    origin: [-180.0, 90.0], //原点，左上角
+                    resolutions: this.resolutions, //瓦片地图分辨率
+                    matrixIds: this.gridNames, // 矩阵ID，就是瓦片坐标系z维度各个层级的标识
+              }),
+            attributions:'<a type="info" href="https://earthobservatory.nasa.gov/features/NightLights">Data from NASA</a> '
             })
       })
       var map = new Map({
@@ -80,7 +120,7 @@ export default {
           projection: 'EPSG:4326',
           zoom: 1,
           minZoom:0,
-          maxZoom: 7
+          maxZoom: 6
         }),
         controls:defaults({
             attribution: true,
@@ -93,6 +133,7 @@ export default {
     initSwipeDom(map) {
         var swipe = document.getElementById("swipeContainer");
         var obj = {};
+        //onmousedown按下鼠标触发
         swipe.onmousedown = function(event) {
             var e = event || window.event; 
             // 鼠标点击元素那一刻相对于元素左侧边框的距离=点击时的位置相对于浏览器最左边的距离-物体左边框相对于浏览器最左边的距离

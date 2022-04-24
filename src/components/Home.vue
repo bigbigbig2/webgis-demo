@@ -78,7 +78,7 @@ export default {
           </template>
           <el-menu-item index="arc">网站架构</el-menu-item>
           <el-menu-item index="log">更新日志</el-menu-item>
-          <a style="color: #fff;" href="https://luxd.gq/about/" target="_blank"><el-menu-item click="toAbout">关于白日梦想家</el-menu-item></a>
+          <a style="color: #fff;" href="https://www.luxd.fun/about/" target="_blank"><el-menu-item click="toAbout">关于白日梦想家</el-menu-item></a>
         </el-sub-menu>
       </el-menu>
     </div>

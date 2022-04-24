@@ -1,14 +1,5 @@
 import { createRouter,createWebHashHistory} from 'vue-router';
 import Home from './../components/Home.vue'
-import Night from './../view/night.vue'
-import three from './../view/3D-night.vue'
-import queryWFS from './../view/queryWFS.vue'
-import addWFS from '../view/addWFS.vue';
-import deleteWFS from './../view/deleteWFS.vue';
-import operateWFS from './../view/operateWFS.vue'
-import rain from './../view/rain.vue'
-import log from './../view/log.vue'
-import arc from './../view/arc.vue'
 
 
 const routes = [
@@ -27,7 +18,7 @@ const routes = [
                 meta:{
                     title:'Earth at Night'
                 },
-                component:Night
+                component:()=>import('@/view/night.vue'),
             },
             {
                 name:'three',
@@ -35,7 +26,7 @@ const routes = [
                 meta:{
                     title:'3D Earth at Night'
                 },
-                component:three
+                component:()=>import('@/view/3D-night.vue')
             },
             {
                 name:'queryWFS',
@@ -43,7 +34,7 @@ const routes = [
                 meta:{
                     title:'通过WFS查询要素'
                 },
-                component:queryWFS
+                component:()=>import('@/view/queryWFS.vue')
             },
             {
                 name:'addWFS',
@@ -51,7 +42,7 @@ const routes = [
                 meta:{
                     title:'通过WFS添加要素'
                 },
-                component:addWFS
+                component:()=>import('@/view/addWFS.vue')
             },
             {
                 name:'deleteWFS',
@@ -59,7 +50,7 @@ const routes = [
                 meta:{
                     title:'通过WFS删除要素'
                 },
-                component:deleteWFS
+                component:()=>import('@/view/deleteWFS.vue')
             },
             {
                 name:'operateWFS',
@@ -67,7 +58,7 @@ const routes = [
                 meta:{
                     title:'通过WFS修改要素'
                 },
-                component:operateWFS
+                component:()=>import('@/view/operateWFS.vue')
             },
             {
                 name:'rain',
@@ -75,7 +66,7 @@ const routes = [
                 meta:{
                     title:'雨水分布图'
                 },
-                component:rain
+                component:()=>import('@/view/rain.vue')
             },
             {
                 name:'log',
@@ -83,7 +74,7 @@ const routes = [
                 meta:{
                     title:'更新日志'
                 },
-                component:log
+                component:()=>import('@/view/log.vue')
             },
             {
                 name:'arc',
@@ -91,7 +82,7 @@ const routes = [
                 meta:{
                     title:'网站架构'
                 },
-                component:arc
+                component:()=>import('@/view/arc.vue')
             },
             
         ]

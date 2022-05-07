@@ -118,7 +118,7 @@ export default {
     displayRainPublic(a){
       this.loading = true;
       axios({
-      url: 'http://typhoon.zjwater.gov.cn/Api/LeastRain/' + a,
+      url: '/Api/LeastRain/' + a,
       method:'get',
       responseType: 'json',
       }).then(a=>{
@@ -131,6 +131,7 @@ export default {
               d.push([e.latAndLong[f][1], e.latAndLong[f][0]]);
             }
             g = b[c].color.substring(0, b[c].color.lastIndexOf(','));
+            // console.log(d)
             var polygon = new Polygon([d]);
             polygon.applyTransform(getTransform('EPSG:4326', 'EPSG:3857'));
             var feature = new Feature({
@@ -142,7 +143,6 @@ export default {
           }
           const key = this.vectorLayer.on('postrender',()=>{
             this.loading = false;
-            //注销事件，不然放大地图什么它都会重新渲染，都会调用这个函数巨多次
             ElMessage({
               type: 'success',
               message: '数据来源中央气象台，发布时间'+a.data.time,

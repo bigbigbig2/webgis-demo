@@ -35,4 +35,13 @@ export default defineConfig({
       '@':path.resolve(__dirname,'./src')
     }
   },
+  server:{
+    //配置代理
+    proxy:{
+      "/Api":{
+        target:"http://typhoon.zjwater.gov.cn",
+        changeOrigin: true,
+      },
+    }
+  },
 })

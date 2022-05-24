@@ -70,6 +70,7 @@ export default {
             <span>ol杂烩</span>
           </template>
           <el-menu-item index="rain">雨水分布图</el-menu-item>
+          <el-menu-item index="dijkstra">深圳出行最短路径</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="4">
           <template #title>
@@ -78,7 +79,7 @@ export default {
           </template>
           <el-menu-item index="arc">网站架构</el-menu-item>
           <el-menu-item index="log">更新日志</el-menu-item>
-          <a style="color: #fff;" href="https://www.luxd.fun/about/" target="_blank"><el-menu-item click="toAbout">关于白日梦想家</el-menu-item></a>
+          <a style="color: #fff;" href="https://www.luxd.fun/about/" target="_blank"><el-menu-item click="toAbout">关于我</el-menu-item></a>
         </el-sub-menu>
       </el-menu>
     </div>

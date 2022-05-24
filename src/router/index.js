@@ -69,6 +69,14 @@ const routes = [
                 component:()=>import('@/view/rain.vue')
             },
             {
+                name:'dijkstra',
+                path:'/dijkstra',
+                meta:{
+                    title:'最短路径'
+                },
+                component:()=>import('@/view/dijkstra.vue')
+            },
+            {
                 name:'log',
                 path:'/log',
                 meta:{
